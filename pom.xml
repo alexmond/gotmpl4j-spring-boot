@@ -5,12 +5,12 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>4.1.1</version>
+        <version>4.0.8</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>org.alexmond</groupId>
     <artifactId>gotmpl4j-spring-boot-parent</artifactId>
-    <version>4.1.1.1-SNAPSHOT</version>
+    <version>4.0.8.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>gotmpl4j-spring-boot-parent</name>
     <description>Spring Boot integration for gotmpl4j — the gotmpl4j-spring context functions and

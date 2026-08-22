@@ -2,7 +2,7 @@
 
 [![Maven Central](https://img.shields.io/maven-central/v/org.alexmond/gotmpl4j-spring-boot-starter.svg?label=Maven%20Central)](https://central.sonatype.com/artifact/org.alexmond/gotmpl4j-spring-boot-starter)
 [![Javadoc](https://img.shields.io/badge/Javadoc-API-blue)](https://javadoc.io/doc/org.alexmond/gotmpl4j-spring-boot-starter)
-[![Build](https://img.shields.io/github/actions/workflow/status/alexmond/gotmpl4j-spring-boot/maven.yml?branch=main)](https://github.com/alexmond/gotmpl4j-spring-boot/actions)
+[![Build](https://img.shields.io/github/actions/workflow/status/alexmond/gotmpl4j-spring-boot/maven.yml?branch=4.0)](https://github.com/alexmond/gotmpl4j-spring-boot/actions)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Java](https://img.shields.io/badge/Java-17%2B-blue.svg)](https://openjdk.org/)
 
@@ -32,7 +32,7 @@ get their own maintenance branch.
 | Branch | Spring Boot | Version |
 |---|---|---|
 | `main` | 4.1.x | `4.1.1.1` |
-| `4.0`  | 4.0.x | `4.0.8.1` |
+| `4.0` **(this branch)** | 4.0.x | `4.0.8.1` |
 
 Pick the version matching your application's Boot line. The engine dependency
 (`gotmpl4j-core` / `-sprig`, plain semver) is the same across lines.
@@ -48,7 +48,7 @@ Pick the version matching your application's Boot line. The engine dependency
 <dependency>
     <groupId>org.alexmond</groupId>
     <artifactId>gotmpl4j-spring-boot-starter</artifactId>
-    <version>4.1.1.1</version>
+    <version>4.0.8.1</version>
 </dependency>
 ```
 
