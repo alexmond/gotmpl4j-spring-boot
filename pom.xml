@@ -10,7 +10,7 @@
     </parent>
     <groupId>org.alexmond</groupId>
     <artifactId>gotmpl4j-spring-boot-parent</artifactId>
-    <version>4.0.8.1</version>
+    <version>4.0.8.2-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>gotmpl4j-spring-boot-parent</name>
     <description>Spring Boot integration for gotmpl4j — the gotmpl4j-spring context functions and
@@ -56,7 +56,7 @@
         <maven.compiler.release>17</maven.compiler.release>
 
         <!-- Reproducible builds: a constant timestamp so rebuilding a tag is byte-for-byte stable. -->
-        <project.build.outputTimestamp>2026-08-22T15:56:20Z</project.build.outputTimestamp>
+        <project.build.outputTimestamp>2026-08-22T16:03:34Z</project.build.outputTimestamp>
     </properties>
     <scm>
         <connection>scm:git:git@github.com:alexmond/gotmpl4j-spring-boot.git</connection>
