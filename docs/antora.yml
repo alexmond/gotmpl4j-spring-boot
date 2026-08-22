@@ -1,0 +1,26 @@
+name: gotmpl4j-spring-boot
+title: gotmpl4j Spring Boot
+version: true
+start_page: ROOT:index.adoc
+asciidoc:
+  attributes:
+    # javadoc.io serves versioned API docs for every published artifact. Use the /doc/ form:
+    # the /page/ form's base index resolves but its deep class-page paths 404 for these
+    # artifacts (a javadoc.io quirk), so composed API links 404 on the live site (gotmpl4j#108).
+    # /doc/ serves the same deep paths. Compose as
+    # {api-starter}/{page-component-version}/<class path>.html in pages — the component
+    # version is derived by Antora from the tag the hub pins, so it needs no manual bump.
+    api-spring: 'https://javadoc.io/doc/org.alexmond/gotmpl4j-spring'
+    api-starter: 'https://javadoc.io/doc/org.alexmond/gotmpl4j-spring-boot-starter'
+    # The engine + Sprig are published from the separate gotmpl4j repo on plain semver, so
+    # their API links are NOT version-composed with {page-component-version} here.
+    api-core: 'https://javadoc.io/doc/org.alexmond/gotmpl4j-core'
+    api-sprig: 'https://javadoc.io/doc/org.alexmond/gotmpl4j-sprig'
+    engine-docs: 'https://www.alexmond.org/gotmpl4j/current'
+    toc: left
+    sectnums: ''
+    keywords: 'Go template, text/template, Sprig, Java, Spring Boot, ViewResolver'
+    author: 'Alexander Mondshain'
+    email: 'alex.mondshain@gmail.com'
+nav:
+  - modules/ROOT/nav.adoc

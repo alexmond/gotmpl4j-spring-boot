@@ -1,0 +1,67 @@
+name: Java CI with Maven
+
+# One long-lived branch per maintained Spring Boot line (main = latest line, plus a
+# <major>.<minor> maintenance branch each), so CI runs on all of them, not just main.
+on:
+  push:
+    branches: [ main, "[0-9]+.[0-9]+" ]
+  pull_request:
+    branches: [ "**" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      checks: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+      # -Pdefault also builds the runnable sample apps (not published, but they must compile).
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml -Pdefault --no-transfer-progress
+
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+          files: |
+            **/surefire-reports/TEST-*.xml
+
+      - name: Add coverage to PR
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: '**/target/site/jacoco/jacoco.xml'
+          fail_ci_if_error: false
+
+      - name: Upload test results to Codecov
+        if: ${{ !cancelled() }}
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          report-type: test_results
+          files: |
+            **/surefire-reports/TEST-*.xml
+
+      - name: Report tests + coverage to UniTrack
+        if: always()
+        uses: alexmond/unitrack/action@v0
+        with:
+          url: ${{ vars.UNITRACK_URL }}
+          token: ${{ secrets.UNITRACK_TOKEN }}
+          junit: '**/surefire-reports/TEST-*.xml'
+          jacoco: '**/jacoco.xml'
+          split-by-module: "true"
+          soft-fail: "true"
+
+      - name: Submit Dependency Snapshot
+        uses: advanced-security/maven-dependency-submission-action@v5

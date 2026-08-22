@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.alexmond</groupId>
+        <artifactId>gotmpl4j-spring-boot-parent</artifactId>
+        <version>4.1.1.1-SNAPSHOT</version>
+    </parent>
+    <artifactId>gotmpl4j-samples</artifactId>
+    <packaging>pom</packaging>
+
+    <name>gotmpl4j Spring Boot Samples</name>
+    <description>Runnable Spring Boot examples: the MVC and WebFlux view resolvers and the
+        Spring context functions. Not published to Maven Central — these are documentation,
+        not artifacts. Built by the default profile (./mvnw verify -Pdefault).</description>
+
+    <modules>
+        <module>web-mvc</module>
+        <module>web-flux</module>
+        <module>spring-context</module>
+    </modules>
+
+    <build>
+        <plugins>
+            <!-- Samples are documentation, never artifacts. The central-publishing plugin (active
+                 in the release profile) has its own skip; set it here so every sample module
+                 inherits it and nothing is bundled to Central. -->
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <configuration>
+                    <skipPublishing>true</skipPublishing>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

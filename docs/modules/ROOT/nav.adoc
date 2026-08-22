@@ -1,0 +1,4 @@
+* xref:index.adoc[Introduction]
+* xref:spring-boot-starter.adoc[Spring Boot starter]
+* xref:spring-functions.adoc[Spring context functions]
+* xref:configuration.adoc[Configuration]

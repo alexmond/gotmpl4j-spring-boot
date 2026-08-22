@@ -1,0 +1,89 @@
+= gotmpl4j Spring Boot
+:description: Spring Boot integration for the gotmpl4j Go text/template engine.
+
+Spring Boot integration for https://www.alexmond.org/gotmpl4j/current/[gotmpl4j^] — the
+pure-Java implementation of Go's `text/template` engine. Two artifacts:
+
+[cols="1,2"]
+|===
+| Artifact | What it gives you
+
+| `org.alexmond:gotmpl4j-spring-boot-starter`
+| Auto-configuration: a ready-to-inject template engine, configuration properties, a compile
+  cache, and optional MVC / WebFlux `ViewResolver`s so controllers can return view names.
+
+| `org.alexmond:gotmpl4j-spring`
+| Template functions that read from the running application — `msg` (i18n), `env` (config),
+  `bean`, plus Spring Security (`hasRole`/`isAuthenticated`/…) and web (`param`/`csrf`/…)
+  helpers. Ships with the starter.
+|===
+
+== Versioning — one branch per Spring Boot line
+
+This project's version *tracks the Spring Boot release it builds against*, in the form
+`<boot-version>.<revision>`:
+
+[cols="1,1,2"]
+|===
+| Branch | Spring Boot | Example version
+
+| `main` | 4.1.x | `4.1.1.1`
+| `4.0`  | 4.0.x | `4.0.8.1`
+|===
+
+Pick the artifact version matching your application's Spring Boot line. `main` always tracks
+the newest Spring Boot release; older lines get their own maintenance branch.
+
+NOTE: The engine itself (`gotmpl4j-core`, `gotmpl4j-sprig`) is Spring-free and versioned
+separately on plain semver in the
+https://github.com/alexmond/gotmpl4j[gotmpl4j^] repository — one engine build serves every
+Boot line.
+
+== Quick start
+
+[source,xml,subs="attributes"]
+----
+<dependency>
+    <groupId>org.alexmond</groupId>
+    <artifactId>gotmpl4j-spring-boot-starter</artifactId>
+    <version>{page-component-version}</version>
+</dependency>
+----
+
+[source,java]
+----
+@Service
+class GreetingService {
+
+    private final GoTemplateService templates;
+
+    GreetingService(GoTemplateService templates) {
+        this.templates = templates;
+    }
+
+    String greet(String name) {
+        return templates.render("greeting", Map.of("name", name));
+    }
+}
+----
+
+Then xref:spring-boot-starter.adoc[configure the starter], add the
+xref:spring-functions.adoc[Spring context functions], or browse the full
+xref:configuration.adoc[property reference].
+
+== Template syntax and functions
+
+Template syntax, the Sprig function library, and the extension SPI are documented with the
+engine:
+
+* {engine-docs}/template-syntax.html[Template syntax^]
+* {engine-docs}/sprig-functions.html[Sprig functions^]
+* {engine-docs}/extending-functions.html[Extending functions^]
+* {engine-docs}/conformance.html[Conformance^] — 1,305 cases asserted byte-for-byte against Go
+
+== API documentation
+
+* {api-starter}/{page-component-version}/index.html[`gotmpl4j-spring-boot-starter` API^]
+* {api-spring}/{page-component-version}/index.html[`gotmpl4j-spring` API^]
+* {api-core}/index.html[`gotmpl4j-core` API^] (engine)
+* {api-sprig}/index.html[`gotmpl4j-sprig` API^] (Sprig functions)
