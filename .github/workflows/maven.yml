@@ -34,7 +34,7 @@ jobs:
           cache: maven
       # -Pdefault also builds the runnable sample apps (not published, but they must compile).
       - name: Build with Maven
-        run: mvn -B package --file pom.xml -Pdefault --no-transfer-progress
+        run: mvn -B verify --file pom.xml -Pdefault --no-transfer-progress
 
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
