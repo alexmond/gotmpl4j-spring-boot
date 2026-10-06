@@ -18,4 +18,4 @@ jobs:
       paths: [.m2/repository]
     steps:
       - name: Build with Maven
-        run: ./mvnw -B package --file pom.xml -Pdefault --no-transfer-progress -Dmaven.repo.local=.m2/repository
+        run: ./mvnw -B verify --file pom.xml -Pdefault --no-transfer-progress -Dmaven.repo.local=.m2/repository
