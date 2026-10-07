@@ -19,6 +19,8 @@ jobs:
       fail-fast: false
       matrix:
         java: [ '17', '21', '25' ]
+    env:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
     permissions:
       contents: write
       checks: write
@@ -34,7 +36,7 @@ jobs:
           cache: maven
       # -Pdefault also builds the runnable sample apps (not published, but they must compile).
       - name: Build with Maven
-        run: mvn -B verify --file pom.xml -Pdefault --no-transfer-progress
+        run: ./mvnw -B verify --file pom.xml -Pdefault --no-transfer-progress
 
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
@@ -43,19 +45,21 @@ jobs:
           files: |
             **/surefire-reports/TEST-*.xml
 
+      # Upload only when CODECOV_TOKEN is set; without it the step is skipped so CI stays
+      # green (tokenless upload is not allowed on this org).
       - name: Add coverage to PR
-        if: ${{ matrix.java == '17' }}
+        if: ${{ env.CODECOV_TOKEN != '' && matrix.java == '17' }}
         uses: codecov/codecov-action@v5
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+          token: ${{ env.CODECOV_TOKEN }}
           files: '**/target/site/jacoco/jacoco.xml'
           fail_ci_if_error: false
 
       - name: Upload test results to Codecov
-        if: ${{ !cancelled() && matrix.java == '17' }}
+        if: ${{ !cancelled() && env.CODECOV_TOKEN != '' && matrix.java == '17' }}
         uses: codecov/codecov-action@v5
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+          token: ${{ env.CODECOV_TOKEN }}
           report-type: test_results
           files: |
             **/surefire-reports/TEST-*.xml
@@ -71,6 +75,9 @@ jobs:
           split-by-module: "true"
           soft-fail: "true"
 
+      # Best-effort supply-chain snapshot; needs the repo's Dependency graph feature. Never
+      # fail CI on it, and only submit for pushes (a PR from a fork has no write token).
       - name: Submit Dependency Snapshot
-        if: ${{ matrix.java == '17' }}
+        if: ${{ github.event_name == 'push' && matrix.java == '17' }}
+        continue-on-error: true
         uses: advanced-security/maven-dependency-submission-action@v5
