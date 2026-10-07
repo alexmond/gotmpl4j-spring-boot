@@ -31,8 +31,10 @@ This repo follows the sibling Boot-extension standard (`spring-boot-config-json-
   at **1** and advances for repo-only changes on the same Boot version.
 - **`main` is always the latest Spring Boot line.** Maintenance branches are named
   `<major>.<minor>` (currently `4.0`).
-- A **minor** Boot bump (4.1 → 4.2) rolls forward on `main` with **no new branch**. A new
-  maintenance branch is cut only when the next **major** Boot line arrives.
+- When `main` moves to a new Boot **minor** (4.1 → 4.2), cut the outgoing line to its own
+  `<major>.<minor>` branch **first**, from the pre-bump head. Every Boot minor gets a branch,
+  not only a new major.
+- A fix that applies to every line goes to each branch, one PR each.
 
 Use the **`boot-upgrade` skill** to survey branches vs the latest Boot patch and drive bumps.
 
