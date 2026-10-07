@@ -45,6 +45,7 @@
         <central-publishing-maven-plugin.version>0.11.0</central-publishing-maven-plugin.version>
 
         <jacoco-maven-plugin.version>0.8.15</jacoco-maven-plugin.version>
+        <jacoco.check.skip>false</jacoco.check.skip>
         <maven-pmd-plugin.version>3.28.0</maven-pmd-plugin.version>
         <maven-checkstyle-plugin.version>3.6.0</maven-checkstyle-plugin.version>
         <spring-javaformat.version>0.0.47</spring-javaformat.version>
@@ -215,6 +216,30 @@
                                     <format>XML</format>
                                     <format>HTML</format>
                                 </formats>
+                            </configuration>
+                        </execution>
+                        <!-- Coverage gate on the published modules. The samples switch it off
+                             (jacoco.check.skip) - they are documentation, not artifacts. -->
+                        <execution>
+                            <id>check</id>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+                            <configuration>
+                                <skip>${jacoco.check.skip}</skip>
+                                <rules>
+                                    <rule>
+                                        <element>BUNDLE</element>
+                                        <limits>
+                                            <limit>
+                                                <counter>LINE</counter>
+                                                <value>COVEREDRATIO</value>
+                                                <minimum>0.80</minimum>
+                                            </limit>
+                                        </limits>
+                                    </rule>
+                                </rules>
                             </configuration>
                         </execution>
                     </executions>
