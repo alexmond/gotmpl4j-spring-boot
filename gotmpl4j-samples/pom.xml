@@ -16,6 +16,11 @@
         Spring context functions. Not published to Maven Central — these are documentation,
         not artifacts. Built by the default profile (./mvnw verify -Pdefault).</description>
 
+    <properties>
+        <!-- No coverage gate on the samples; the report still runs. -->
+        <jacoco.check.skip>true</jacoco.check.skip>
+    </properties>
+
     <modules>
         <module>web-mvc</module>
         <module>web-flux</module>
