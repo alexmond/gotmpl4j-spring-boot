@@ -53,10 +53,10 @@ jobs:
       - name: Set Release Version
         env:
           RELEASE_VERSION: ${{ github.event.inputs.releaseVersion }}
-        run: mvn versions:set -DnewVersion="$RELEASE_VERSION" -Pdefault --no-transfer-progress
+        run: ./mvnw versions:set -DnewVersion="$RELEASE_VERSION" -Pdefault --no-transfer-progress
 
       - name: Verify Build
-        run: mvn --batch-mode verify -Pdefault --no-transfer-progress
+        run: ./mvnw --batch-mode verify -Pdefault --no-transfer-progress
 
       - name: Commit and Tag Release
         env:
@@ -66,7 +66,7 @@ jobs:
           git tag -a "$RELEASE_VERSION" -m "Release $RELEASE_VERSION"
 
       - name: Deploy to Maven Central
-        run: mvn --batch-mode clean deploy -Prelease -Dgpg.passphrase="${GPG_PASSPHRASE}" --no-transfer-progress
+        run: ./mvnw --batch-mode clean deploy -Prelease -Dgpg.passphrase="${GPG_PASSPHRASE}" --no-transfer-progress
         env:
           OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
@@ -76,7 +76,7 @@ jobs:
         env:
           NEXT_VERSION: ${{ github.event.inputs.nextVersion }}
         run: |
-          mvn versions:set -DnewVersion="$NEXT_VERSION" -Pdefault --no-transfer-progress
+          ./mvnw versions:set -DnewVersion="$NEXT_VERSION" -Pdefault --no-transfer-progress
           git commit -am "Prepare for next development iteration: $NEXT_VERSION"
 
       - name: Push Changes
