@@ -48,7 +48,7 @@
         <jacoco.check.skip>false</jacoco.check.skip>
         <maven-pmd-plugin.version>3.28.0</maven-pmd-plugin.version>
         <maven-checkstyle-plugin.version>3.6.0</maven-checkstyle-plugin.version>
-        <spring-javaformat.version>0.0.47</spring-javaformat.version>
+        <spring-javaformat.version>0.0.48</spring-javaformat.version>
         <checkstyle.version>9.3</checkstyle.version>
 
         <java.version>17</java.version>
