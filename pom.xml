@@ -5,12 +5,12 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>4.0.8</version>
+        <version>4.0.10</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>org.alexmond</groupId>
     <artifactId>gotmpl4j-spring-boot-parent</artifactId>
-    <version>4.0.8.2-SNAPSHOT</version>
+    <version>4.0.10.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>gotmpl4j-spring-boot-parent</name>
     <description>Spring Boot integration for gotmpl4j — the gotmpl4j-spring context functions and
@@ -48,8 +48,8 @@
         <jacoco.check.skip>false</jacoco.check.skip>
         <maven-pmd-plugin.version>3.28.0</maven-pmd-plugin.version>
         <maven-checkstyle-plugin.version>3.6.0</maven-checkstyle-plugin.version>
-        <spring-javaformat.version>0.0.47</spring-javaformat.version>
-        <checkstyle.version>9.3</checkstyle.version>
+        <spring-javaformat.version>0.0.48</spring-javaformat.version>
+        <checkstyle.version>10.12.4</checkstyle.version>
 
         <java.version>17</java.version>
         <maven.compiler.source>17</maven.compiler.source>
