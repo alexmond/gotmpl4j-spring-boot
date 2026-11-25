@@ -8,6 +8,10 @@ Versions **track the Spring Boot release** this project builds against, as
 
 ## [Unreleased]
 
+### Changed
+- Spring Boot **4.1.1 → 4.1.3** (patch bump within the 4.1 line).
+- Build: Checkstyle 10.12.4 and spring-javaformat 0.0.48, the versions Spring Boot's own build uses, with small style fixes for its new rules.
+
 ## [4.1.1.1] - 2026-08-22
 
 Spring Boot **4.1.1** line (branch `main`).
