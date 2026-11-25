@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication.Type;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;
@@ -65,7 +66,7 @@ public class GoTemplateSpringAutoConfiguration {
 	 * present.
 	 */
 	@Configuration(proxyBeanMethods = false)
-	@ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
+	@ConditionalOnWebApplication(type = Type.SERVLET)
 	@ConditionalOnClass({ RequestContextHolder.class, HttpServletRequest.class })
 	static class SpringWebFunctionsConfiguration {
 
