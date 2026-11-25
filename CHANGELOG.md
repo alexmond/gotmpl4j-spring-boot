@@ -8,6 +8,8 @@ Versions **track the Spring Boot release** this project builds against, as
 
 ## [Unreleased]
 
+## [4.1.3.1] - 2026-11-25
+
 ### Changed
 - Spring Boot **4.1.1 → 4.1.3** (patch bump within the 4.1 line).
 - Build: Checkstyle 10.12.4 and spring-javaformat 0.0.48, the versions Spring Boot's own build uses, with small style fixes for its new rules.
@@ -46,6 +48,7 @@ Spring Boot **4.0.8** line (branch `4.0`).
 
 - Spring Boot **4.0.7 → 4.0.8** (patch bump within the 4.0 line).
 
-[Unreleased]: https://github.com/alexmond/gotmpl4j-spring-boot/compare/4.1.1.1...HEAD
+[Unreleased]: https://github.com/alexmond/gotmpl4j-spring-boot/compare/4.1.3.1...HEAD
+[4.1.3.1]: https://github.com/alexmond/gotmpl4j-spring-boot/releases/tag/4.1.3.1
 [4.1.1.1]: https://github.com/alexmond/gotmpl4j-spring-boot/releases/tag/4.1.1.1
 [4.0.8.1]: https://github.com/alexmond/gotmpl4j-spring-boot/releases/tag/4.0.8.1

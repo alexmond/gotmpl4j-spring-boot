@@ -31,8 +31,8 @@ get their own maintenance branch.
 
 | Branch | Spring Boot | Version |
 |---|---|---|
-| `main` | 4.1.x | `4.1.1.1` |
-| `4.0`  | 4.0.x | `4.0.8.1` |
+| `main` | 4.1.x | `4.1.3.1` |
+| `4.0`  | 4.0.x | `4.0.10.1` |
 
 Pick the version matching your application's Boot line. The engine dependency
 (`gotmpl4j-core` / `-sprig`, plain semver) is the same across lines.
@@ -48,7 +48,7 @@ Pick the version matching your application's Boot line. The engine dependency
 <dependency>
     <groupId>org.alexmond</groupId>
     <artifactId>gotmpl4j-spring-boot-starter</artifactId>
-    <version>4.1.1.1</version>
+    <version>4.1.3.1</version>
 </dependency>
 ```
 
