@@ -8,6 +8,9 @@ Versions **track the Spring Boot release** this project builds against, as
 
 ## [Unreleased]
 
+### Changed
+- Spring Boot **4.1.3 → 4.2.0**: `main` is now the 4.2 line (`4.2.0.1-SNAPSHOT`); the 4.1.x line continues on the `4.1` branch.
+
 ## [4.1.3.1] - 2026-11-25
 
 ### Changed
